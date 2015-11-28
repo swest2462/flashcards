@@ -1,0 +1,32 @@
+   <div class="container">
+      <div class="header">
+        <ul class="nav nav-pills pull-right">
+          <li class="active"><%= link_to 'Все карточки', cards_path %></li>
+          <li><a href="#">Добавить карточки</a></li>
+        </ul>
+        <h3 class="text-muted">Флешкарточкер</h3>
+      </div>
+
+  <section id="container">
+    <section>
+      <p style="font-size: 22px;">
+
+       <table>
+        <tr>
+          <th>Original</th>
+          <th>Translated</th>
+          <th>Review date</th>
+        </tr>
+
+  <% @cards.each do |card| %>
+    <tr>
+      <td><%= card.original_text %></td>
+      <td><%= card.translated_text %></td>
+      <td><%= card.review_date %></td>
+    </tr>
+  <% end %>
+</table>
+
+      </p>
+    </section>
+  </section>
