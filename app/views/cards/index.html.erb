@@ -10,8 +10,8 @@
   <section id="container">
     <section>
       <p style="font-size: 22px;">
-
-       <table>
+        <br>
+       <table class="table table-hover">
         <tr>
           <th>Original</th>
           <th>Translated</th>
@@ -22,7 +22,7 @@
     <tr>
       <td><%= card.original_text %></td>
       <td><%= card.translated_text %></td>
-      <td><%= card.review_date.strftime("%d/%m/%Y") %></td>
+      <% if !card.review_date.blank? %><td><%= card.review_date.strftime("%d/%m/%Y") %><% end %></td>
     </tr>
   <% end %>
 </table>
