@@ -10,7 +10,23 @@
   <section id="container">
     <section>
       <p style="font-size: 22px;">
-        "Первый в мире удобный менеджер флеш-карточек. Именно так."
+        <br>
+       <table class="table table-hover">
+        <tr>
+          <th>Original</th>
+          <th>Translated</th>
+          <th>Review date</th>
+        </tr>
+
+  <% @cards.each do |card| %>
+    <tr>
+      <td><%= card.original_text %></td>
+      <td><%= card.translated_text %></td>
+      <% if !card.review_date.blank? %><td><%= card.review_date.strftime("%d/%m/%Y") %><% end %></td>
+    </tr>
+  <% end %>
+</table>
+
       </p>
     </section>
   </section>
