@@ -2,7 +2,7 @@
       <div class="header">
         <ul class="nav nav-pills pull-right">
           <li class="active"><%= link_to 'Все карточки', cards_path %></li>
-          <li><a href="#">Добавить карточки</a></li>
+          <li><%= link_to 'Добавить карточку', new_card_path %></li>
         </ul>
         <h3 class="text-muted">Флешкарточкер</h3>
       </div>
@@ -20,8 +20,9 @@
 
   <% @cards.each do |card| %>
     <tr>
-      <td><%= card.original_text %></td>
-      <td><%= card.translated_text %></td>
+      <td><%= card.original_text %> <br> <%= link_to '[удалить]', card_path(card), method: :delete, data: { confirm: 'Are you sure?' }%> <%= link_to '[править]', edit_card_path(card) %></td>
+
+     <td><%= card.translated_text %></td>
       <% if !card.review_date.blank? %><td><%= card.review_date.strftime("%d/%m/%Y") %><% end %></td>
     </tr>
   <% end %>
