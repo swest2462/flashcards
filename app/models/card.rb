@@ -7,7 +7,7 @@ class Card < ActiveRecord::Base
   after_validation :days3
 
   def days3
-    self.review_date = Time.now + 3.days
+    self.review_date = Date.today + 3.days
   end
 
 

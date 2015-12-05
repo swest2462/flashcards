@@ -43,6 +43,10 @@ class CardsController < ApplicationController
     redirect_to cards_path
   end
 
+  def test
+     @cards = Card.where("review_date < ?", Date.today)
+  end
+
 private
   def card_params
     params.require(:card).permit(:original_text, :translated_text, :review_date)
