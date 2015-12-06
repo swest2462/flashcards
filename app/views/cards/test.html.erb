@@ -1,21 +1,8 @@
-<h1> test</h1>
-<section id="container">
-    <section>
-      <p style="font-size: 22px;">
-        <br>
-       <table class="table table-hover">
-        <tr>
-          <th>Original</th>
-          <th>Translated</th>
-          <th>Review date</th>
-        </tr>
+<h1>test</h1>
 
-  <% @cards.each do |card| %>
-    <tr>
-      <td><%= card.original_text %><%= link_to '[удалить]', card_path(card), method: :delete %> <br><%= link_to '[править]', edit_card_path(card) %></td>
-      <td><%= card.translated_text %></td>
-      <td><%= card.review_date.strftime("%d/%m/%Y") %>
-      </td>
- </tr>
-  <% end %>
-</table>
+    <%= form_for @card do |f| %>
+    <%  hidden_field_tag(:card_id)  %>
+    <%= text_field_tag(:card_original_text) %>
+    <%= f.text_field :translated_text %>
+    <%= f.submit "Проверить" %>
+    <% end %>

@@ -44,8 +44,17 @@ class CardsController < ApplicationController
   end
 
   def test
-     @cards = Card.where("review_date < ?", Date.today)
+     @card = Card.cards_older_today.first
   end
+
+  def proverka
+    if @card.original_text == :answer
+      @card.days3
+    else
+      render 'text'
+    end
+  end
+
 
 private
   def card_params

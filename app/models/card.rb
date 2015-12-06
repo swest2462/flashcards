@@ -6,10 +6,15 @@ class Card < ActiveRecord::Base
 
   after_validation :days3
 
+  scope :cards_older_today, -> { where("review_date < ?", Date.today)}
+
   def days3
     self.review_date = Date.today + 3.days
   end
 
+  def shuffle
+    :cards_older_today.shuffle
+  end
 
   def translated_properly
     if original_text.mb_chars.downcase == translated_text.mb_chars.downcase
