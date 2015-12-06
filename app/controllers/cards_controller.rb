@@ -48,11 +48,7 @@ class CardsController < ApplicationController
   end
 
   def proverka
-    if @card.original_text == :answer
-      @card.days3
-    else
-      render 'text'
-    end
+    render 'cards/test'
   end
 
 

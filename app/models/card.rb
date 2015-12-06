@@ -4,7 +4,7 @@ class Card < ActiveRecord::Base
 
   validate :translated_properly
 
-  after_validation :days3
+  #after_validation :days3
 
   scope :cards_older_today, -> { where("review_date < ?", Date.today)}
 
