@@ -58,8 +58,8 @@ class CardsController < ApplicationController
       else
         flash[:error] = "not right"
       end
-      redirect_to root_path
-    end
+    redirect_to root_path
+  end
 
 private
   def card_params
