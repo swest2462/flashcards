@@ -4,16 +4,12 @@ class Card < ActiveRecord::Base
 
   validate :translated_properly
 
-  #after_validation :days3
+  before_create :days3
 
   scope :cards_older_today, -> { where("review_date < ?", Date.today)}
 
   def days3
     self.review_date = Date.today + 3.days
-  end
-
-  def shuffle
-    :cards_older_today.shuffle
   end
 
   def translated_properly

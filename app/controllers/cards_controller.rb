@@ -48,10 +48,10 @@ class CardsController < ApplicationController
   end
 
   def check
-    @user_answer = params[:user_answer]
+
     @card = Card.find(params[:card_id])
 
-      if @card.original_text.downcase.strip == @user_answer.downcase.strip
+      if @card.original_text.downcase.strip == params[:user_answer].downcase.strip
         flash[:notice] = "well done"
         @card.days3
         @card.save
