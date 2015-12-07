@@ -4,12 +4,13 @@ class Card < ActiveRecord::Base
 
   validate :translated_properly
 
-  after_validation :days3
+  before_create :days3
+
+  scope :cards_older_today, -> { where("review_date < ?", Date.today)}
 
   def days3
-    self.review_date = Time.now + 3.days
+    self.review_date = Date.today + 3.days
   end
-
 
   def translated_properly
     if original_text.mb_chars.downcase == translated_text.mb_chars.downcase
