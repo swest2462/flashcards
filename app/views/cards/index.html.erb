@@ -6,7 +6,7 @@
 <% end %>
 
 
-<%= form_tag root_path do %>
+<%= form_tag check_path do %>
     <%= text_field_tag :user_answer %>
     <%= text_field_tag :translated_text, @card.translated_text%>
     <%= hidden_field_tag :card_id, @card.id %>

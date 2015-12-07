@@ -48,7 +48,6 @@ class CardsController < ApplicationController
   end
 
   def check
-
     @card = Card.find(params[:card_id])
 
       if @card.original_text.downcase.strip == params[:user_answer].downcase.strip
