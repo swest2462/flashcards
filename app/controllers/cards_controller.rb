@@ -1,7 +1,11 @@
 class CardsController < ApplicationController
 
   def index
-    @card = Card.cards_older_today
+    @card = Card.cards_older_today.first
+  end
+
+  def all
+    @card = Card.all
   end
 
   def show
@@ -46,9 +50,16 @@ class CardsController < ApplicationController
   def check
     @user_answer = params[:user_answer]
     @card = Card.find(params[:card_id])
-    flash[:notice] = "not right"  if @card.original_text != @user_answer
-  end
 
+      if @card.original_text.downcase.strip == @user_answer.downcase.strip
+        flash[:notice] = "well done"
+        @card.days3
+        @card.save
+      else
+        flash[:error] = "not right"
+      end
+      redirect_to root_path
+    end
 
 private
   def card_params
