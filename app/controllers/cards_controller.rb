@@ -1,7 +1,7 @@
 class CardsController < ApplicationController
 
   def index
-    @cards = Card.all
+    @card = Card.cards_older_today
   end
 
   def show
@@ -43,13 +43,10 @@ class CardsController < ApplicationController
     redirect_to cards_path
   end
 
-  def test
-     @card = Card.cards_older_today.first
-  end
-
-  def proverka
-    # отчего-то не срабатыает
-    redirect_to cards_test
+  def check
+    @user_answer = params[:user_answer]
+    @card = Card.find(params[:card_id])
+    flash[:notice] = "not right"  if @card.original_text != @user_answer
   end
 
 
