@@ -48,7 +48,8 @@ class CardsController < ApplicationController
   end
 
   def proverka
-    render 'cards/test'
+    # отчего-то не срабатыает
+    redirect_to cards_test
   end
 
 

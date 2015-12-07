@@ -1,7 +1,7 @@
 <h1>test</h1>
     <%= form_for @card do |f| %>
-    <%  hidden_field_tag(:card_id)  %>
     <%= text_field_tag(:user_answer) %>
     <%= f.text_field :translated_text %>
+    <%= hidden_field_tag("[id]") %>
     <%= f.submit "Проверить" %>
     <% end %>
