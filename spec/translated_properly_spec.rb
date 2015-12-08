@@ -1,5 +1,5 @@
 require "rails_helper"
-RSpec.describe Card, :type => :model do
+
   describe('original_text not equal translated_text') do
     it 'should compare two words and add error if they equal' do
       card = Card.create(original_text: "ДоМ", translated_text: "дом")
@@ -21,6 +21,3 @@ RSpec.describe Card, :type => :model do
       expect(Card.count).to eq 0
     end
   end
-
-
-end
