@@ -4,11 +4,11 @@ class Card < ActiveRecord::Base
 
   validate :translated_properly
 
-  before_update :days3
+  before_create :increase_review_date
 
   scope :cards_older_today, -> { where("review_date < ?", Date.today)}
 
-  def days3
+  def increase_review_date
     self.review_date = Date.today + 3.days
   end
 
