@@ -50,13 +50,13 @@ class CardsController < ApplicationController
   def check
     @card = Card.find(params[:card_id])
 
-      if @card.original_text.downcase.strip == params[:user_answer].downcase.strip
-        flash[:notice] = "well done"
-        @card.days3
-        @card.save
-      else
-        flash[:error] = "not right"
-      end
+    if @card.original_text.downcase.strip == params[:user_answer].downcase.strip
+      flash[:notice] = "well done"
+      @card.increase_review_date
+      @card.save
+    else
+      flash[:error] = "not right"
+    end
     redirect_to root_path
   end
 

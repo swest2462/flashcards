@@ -1,14 +1,14 @@
 class Card < ActiveRecord::Base
 
-  validates :original_text,  :translated_text, :review_date, presence: true
+  validates :original_text,  :translated_text, presence: true
 
   validate :translated_properly
 
-  before_create :days3
+  before_create :increase_review_date
 
   scope :cards_older_today, -> { where("review_date < ?", Date.today)}
 
-  def days3
+  def increase_review_date
     self.review_date = Date.today + 3.days
   end
 
