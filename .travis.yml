@@ -5,6 +5,10 @@ script:
   - bundle exec rspec
 addons:
   postgresql: "9.3.10"
+
+services:
+  - postgresql
+
 before_script:
   - cp config/database.yml.travis config/database.yml
   - psql -c 'create database test_travis;' -U postgres
