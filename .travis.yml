@@ -1,10 +1,10 @@
 language: ruby
-rvm: 2.2.1
-env: RAILS_ENV=test
-script:
-  - bundle exec rspec
+rvm:
+  - 2.2.1
+env:
+  - DB=postgres
 addons:
-  postgresql: "9.3.10"
+  postgresql: "9.4"
 
 services:
   - postgresql
@@ -12,5 +12,4 @@ services:
 before_script:
   - cp config/database.yml.travis config/database.yml
   - psql -c 'create database test_travis;' -U postgres
-  - bundle exec rake db:migrate
-install: bundle install --jobs=3 --retry=3
+  - RAILS_ENV=test bundle exec rake db:create
