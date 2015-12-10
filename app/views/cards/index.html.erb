@@ -7,8 +7,8 @@
 
 
   <%= form_tag check_path, method: :post do %>
-  <%= text_field_tag :user_answer, nil, class: 'form-control', required: true, autofocus: true%>
-  <%= text_field_tag :translated_text, @card.translated_text, class: 'form-control' %>
+  <%= text_field_tag :user_answer, nil, class: 'form-control' %>
+  <%= @card.translated_text %>
   <%= hidden_field_tag :card_id, @card.id %>
-  <button>Проверить!</button>
+  <button>Check!</button>
 <% end %>
