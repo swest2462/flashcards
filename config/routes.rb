@@ -6,9 +6,10 @@ Rails.application.routes.draw do
 
   get '/sign_up', to: 'users#new', as: :sign_up
   get '/log_in', to: 'sessions#new', as: :log_in
-  get '/secret', to: 'pages#index', as: :secret
   delete '/log_out', to: 'sessions#destroy', as: :log_out
-  get '/all' => 'cards#all'
+
+  get '/secret', to: 'cards#all', as: :secret
+  get '/index' => 'cards#index'
   post '/check' => 'cards#check'
   root to: 'cards#index'
   # Example of regular route:
