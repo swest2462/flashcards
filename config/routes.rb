@@ -1,12 +1,16 @@
 
 Rails.application.routes.draw do
-  # The priority is based upon order of creation: first created -> highest priority.
-  # See how all your routes lay out with "rake routes".
+  resources :cards
+  resources :users, only: [:new, :create]
+  resources :sessions, only: [:new, :create, :destroy]
 
-  # You can have the root of your site routed with "root"
-  root 'cards#index'
+  get '/sign_up', to: 'users#new', as: :sign_up
+  get '/log_in', to: 'sessions#new', as: :log_in
+  get '/secret', to: 'pages#index', as: :secret
+  delete '/log_out', to: 'sessions#destroy', as: :log_out
   get '/all' => 'cards#all'
   post '/check' => 'cards#check'
+  root to: 'cards#index'
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
@@ -14,7 +18,7 @@ Rails.application.routes.draw do
   #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
 
   # Example resource route (maps HTTP verbs to controller actions automatically):
-   resources :cards
+
   # Example resource route with options:
   #   resources :products do
   #     member do

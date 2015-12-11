@@ -10,6 +10,8 @@ gem 'pg', '~> 0.18.4'
 gem 'jquery-rails'
 gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
+gem 'sorcery'
+gem 'validates_email_format_of'
 gem 'sdoc', '~> 0.4.0', group: :doc
 
 group :development, :test do
