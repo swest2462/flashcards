@@ -31,7 +31,7 @@ class CardsController < ApplicationController
   end
 
   def update
-    @card = Card.find(params[:id])
+    @card = current_user.cards.find(params[:id])
 
     if @card.update(card_params)
       redirect_to cards_path
