@@ -26,6 +26,7 @@
         <ul class="nav navbar-nav pull-right">
           <li><span><%= current_user.name %></span></li>
           <li><%= link_to 'Выход', log_out_path, method: :delete %></li>
+          <li><%= link_to 'Редактировать профиль', edit_profile_path(current_user) %></li>
         </ul>
       <% end %>
     </div>

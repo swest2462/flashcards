@@ -12,6 +12,8 @@ Rails.application.routes.draw do
   get '/index' => 'cards#index'
   post '/check' => 'cards#check'
   root to: 'cards#index'
+  get 'profile/:id/edit' => 'profile#edit', as: :edit_profile
+  put 'profile/:id' => 'profile#update', as: :profile
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
