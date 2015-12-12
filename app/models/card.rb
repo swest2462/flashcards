@@ -1,6 +1,6 @@
 class Card < ActiveRecord::Base
 
-  has_one :users
+  belongs_to :user
 
   validates :original_text,  :translated_text, presence: true
 
