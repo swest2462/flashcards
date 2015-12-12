@@ -1,11 +1,11 @@
 class CardsController < ApplicationController
 
   def index
-    @card = Card.cards_older_today.first
+    @card = current_user.cards.cards_older_today.first
   end
 
   def all
-    @card = Card.all
+    @card = current_user.cards.all
   end
 
   def show
@@ -17,11 +17,11 @@ class CardsController < ApplicationController
   end
 
   def edit
-    @card = Card.find(params[:id])
+    @card = current_user.cards.find(params[:id])
   end
 
   def create
-    @card = Card.new(card_params)
+    @card = current_user.cards.new(card_params)
 
     if @card.save
       redirect_to cards_path
@@ -62,6 +62,6 @@ class CardsController < ApplicationController
 
 private
   def card_params
-    params.require(:card).permit(:original_text, :translated_text, :review_date)
+    params.require(:card).permit(:original_text, :translated_text, :review_date, :user_id)
   end
 end
